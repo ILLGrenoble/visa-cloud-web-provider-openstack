@@ -1,4 +1,5 @@
 import {Flavour, Image, Instance, Metrics} from "../models";
+import { InstanceIdentifier } from "../models/instance-identifier.model";
 
 export interface CloudProvider {
 
@@ -16,7 +17,7 @@ export interface CloudProvider {
     /**
      * Get a list of instance identifiers
      */
-    instanceIdentifiers(): Promise<string[]>;
+    instanceIdentifiers(): Promise<InstanceIdentifier[]>;
 
     /**
      * Get the security groups for a given instance identifier

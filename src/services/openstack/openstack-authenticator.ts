@@ -92,7 +92,7 @@ export class OpenstackAuthenticator {
         try {
             const response = await this.sendRequest();
             this.handleResponse(response);
-        } catch (error) {
+        } catch (error: any) {
             throw new HttpException(`Error authenticating to openstack: ${error.message}`, error?.response?.status);
         }
     }

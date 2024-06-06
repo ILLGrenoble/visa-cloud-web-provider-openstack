@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import {logger} from './utils';
 import {Application} from './application';
 
-dotenv.config();
 
 export async function main() {
     // Create a new application

@@ -1,5 +1,5 @@
 import {singleton} from "tsyringe";
-import {CloudInstanceState, Flavour, Image, Instance, InstanceFault, Metrics} from "../../models";
+import {CloudInstanceState, Flavour, Image, Instance, InstanceFault, InstanceIdentifier, Metrics} from "../../models";
 import axios, {AxiosInstance} from "axios";
 import {OpenstackAuthenticator} from "./openstack-authenticator";
 import {HttpException} from "../../exceptions";
@@ -192,13 +192,13 @@ export class OpenstackService implements CloudProvider {
     /**
      * Get a list of instance identifiers
      */
-    async instanceIdentifiers(): Promise<string[]> {
+    async instanceIdentifiers(): Promise<InstanceIdentifier[]> {
         logger.info(`Fetching instance identifiers`);
         const url = `${this._endpoints.computeEndpoint}/v2/servers`;
         const result = await this._client.get(url);
         const {data} = result;
         const {servers} = data;
-        return servers.map(server => server.id);
+        return servers.map(server => ({id: server.id, name: server.name}));
     }
 
     /**

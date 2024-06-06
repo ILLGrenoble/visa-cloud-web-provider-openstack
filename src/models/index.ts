@@ -4,3 +4,4 @@ export * from './image.model';
 export * from './flavour.model';
 export * from './metrics.model';
 export * from './instance-state.model';
+export * from './instance-identifier.model';
